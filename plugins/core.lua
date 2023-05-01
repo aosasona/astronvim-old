@@ -1,5 +1,5 @@
 local ntree_window = {
-  width = 35,
+  width = 30,
   mappings = {
     ["<S-h>"] = "prev_source",
     ["<S-l>"] = "next_source",
@@ -34,7 +34,7 @@ return {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
       window = {
-        width = 35,
+        width = 30,
         mappings = {
           ["<S-h>"] = "prev_source",
           ["<S-l>"] = "next_source",
