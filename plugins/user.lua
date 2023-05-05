@@ -24,7 +24,7 @@ return {
     lazy = false,
     config = function() require("elixir").setup() end,
   },
-  { "sainnhe/gruvbox-material", lazy = false },
+  { "sainnhe/gruvbox-material", as = "gruvbox-material", lazy = false },
   { "wuelnerdotexe/vim-astro" },
   { "rebelot/kanagawa.nvim" },
   { "EdenEast/nightfox.nvim" },
