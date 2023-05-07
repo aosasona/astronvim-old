@@ -25,6 +25,7 @@ return {
         "ruby_ls",
         "sqlls",
         "tailwindcss",
+        "rust_analyzer",
       },
     },
   },
@@ -48,7 +49,8 @@ return {
         "gotests",
       },
       handlers = {
-        taplo = function() end, -- disable taplo in null-ls, it's taken care of by lspconfig
+        taplo = function()
+        end,                    -- disable taplo in null-ls, it's taken care of by lspconfig
       },
     },
   },
