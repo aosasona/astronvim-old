@@ -43,7 +43,6 @@ return {
         "shellcheck",
         "sqlfmt",
         "goimports",
-        "golines",
         "goimports",
         "gomodifytags",
         "gotests",
