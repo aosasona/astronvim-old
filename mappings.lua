@@ -62,6 +62,7 @@ return {
   },
   i = {
     ["<M-tab>"] = { 'copilot#Accept("<CR>")', silent = true, expr = true },
+    ["<C-/>"] = { 'copilot#Accept("<CR>")', silent = true, expr = true },
   },
   x = {
     -- better increment/decrement
