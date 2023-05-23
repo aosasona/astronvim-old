@@ -52,6 +52,9 @@ return {
       end,
       desc = "Toggle Explorer Focus",
     },
+
+    -- Code actions
+    ["<leader>a"] = { "<cmd>CodeActionMenu<CR>", desc = "Show code action menu" },
   },
   t = {
     -- setting a mapping to false will disable it
