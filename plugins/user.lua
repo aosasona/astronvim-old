@@ -9,15 +9,18 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
+  -- { "dmmulroy/tsc.nvim" },
+  -- { "ellisonleao/carbon-now.nvim", cmd = "CarbonNow", lazy = false },
   {
     "wakatime/vim-wakatime",
     lazy = false,
   },
   { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu", lazy = false },
-  { "mattn/emmet-vim" },
+  { "mattn/emmet-vim", lazy = false },
   { "ekalinin/Dockerfile.vim" },
   {
     "kylechui/nvim-surround",
+    lazy = false,
     config = function() require("nvim-surround").setup() end,
   },
   {
@@ -27,14 +30,14 @@ return {
   },
   { "sainnhe/gruvbox-material", as = "gruvbox-material", lazy = false },
   { "ayu-theme/ayu-vim", as = "ayu-vim", lazy = false },
-  { "wuelnerdotexe/vim-astro" },
+  { "wuelnerdotexe/vim-astro", lazy = false },
   { "rebelot/kanagawa.nvim", lazy = false },
   { "EdenEast/nightfox.nvim", lazy = false },
   { "folke/tokyonight.nvim", lazy = false },
   { "drewtempelmeyer/palenight.vim", lazy = false },
-  { "Everblush/everblush.nvim", as = "everblush" },
-  { "Mofiqul/dracula.nvim", as = "dracula" },
-  { "olimorris/onedarkpro.nvim" },
+  { "Everblush/everblush.nvim", as = "everblush", lazy = false },
+  { "Mofiqul/dracula.nvim", as = "dracula", lazy = false },
+  { "olimorris/onedarkpro.nvim", lazy = false },
   {
     "rose-pine/neovim",
     as = "rose-pine",
@@ -46,4 +49,5 @@ return {
     "ray-x/go.nvim",
     config = function() require("go").setup() end,
   },
+  { "luisiacc/gruvbox-baby", lazy = false },
 }
