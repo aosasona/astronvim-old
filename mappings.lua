@@ -55,6 +55,24 @@ return {
 
     -- Code actions
     ["<leader>a"] = { "<cmd>CodeActionMenu<CR>", desc = "Show code action menu" },
+    -- refactoring
+    ["<leader>r"] = { "<cmd>Refactor<cr>", desc = "Refactor" }, -- this is to set the prefix properly in which-key
+    ["<leader>rr"] = { function() require("refactoring").select_refactor {} end, desc = "Show refactoring options" },
+    ["<leader>ri"] = { "<cmd>Refactor inline_var<cr>", desc = "Inline variable" },
+    ["<leader>rb"] = { "<cmd>Refactor extract_block<cr>", desc = "Extract block" },
+    ["<leader>rl"] = { "<cmd>Refactor extract_block_to_file<cr>", desc = "Extract block to file" },
+    ["<leader>rp"] = {
+      function() require("refactoring").debug.printf { below = false } end,
+      desc = "Debugging - printf",
+    },
+    ["<leader>r`"] = {
+      function() require("refactoring").debug.print_var {} end,
+      desc = "Debugging - print var",
+    },
+    ["<leader>rc"] = {
+      function() require("refactoring").debug.cleanup {} end,
+      desc = "Debugging - cleanup",
+    },
   },
   t = {
     -- setting a mapping to false will disable it
@@ -75,6 +93,17 @@ return {
     ga = { "<Plug>(EasyAlign)", desc = "Easy Align" },
     -- vim-sandwich
     ["s"] = "<Nop>",
+    -- refactoring
+    ["<leader>r"] = { "<cmd>Refactor<cr>", desc = "Refactor" }, -- this is to set the prefix properly in which-key
+    ["<leader>rr"] = { function() require("refactoring").select_refactor {} end, desc = "Show refactoring options" },
+    ["<leader>re"] = { "<cmd>Refactor extract <cr>", desc = "Extract function" },
+    ["<leader>rf"] = { "<cmd>Refactor extract_to_file <cr>", desc = "Extract function to file" },
+    ["<leader>rv"] = { "<cmd>Refactor extract_var <cr>", desc = "Extract variable" },
+    ["<leader>ri"] = { "<cmd>Refactor inline_var<cr>", desc = "Inline variable" },
+    ["<leader>r`"] = {
+      function() require("refactoring").debug.print_var {} end,
+      desc = "Debugging - print var",
+    },
   },
   o = {
     -- line text-objects
