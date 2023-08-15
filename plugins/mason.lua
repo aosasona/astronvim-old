@@ -4,7 +4,6 @@ return {
     "williamboman/mason-lspconfig.nvim",
     opts = {
       ensure_installed = {
-        "clangd",
         "cssls",
         "gopls",
         "html",
@@ -34,10 +33,8 @@ return {
     opts = {
       ensure_installed = {
         "shellcheck",
-        "codespell",
         "stylua",
         "black",
-        "isort",
         "prettierd",
         "shfmt",
         "shellcheck",
@@ -48,8 +45,7 @@ return {
         "gotests",
       },
       handlers = {
-        taplo = function()
-        end,                    -- disable taplo in null-ls, it's taken care of by lspconfig
+        taplo = function() end, -- disable taplo in null-ls, it's taken care of by lspconfig
       },
     },
   },
