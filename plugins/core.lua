@@ -1,13 +1,14 @@
-local ntree_window = {
-  width = 30,
-  mappings = {
-    ["<S-h>"] = "prev_source",
-    ["<S-l>"] = "next_source",
-    ["H"] = false,
-    ["O"] = "system_open",
-    ["-"] = "parent_or_close",
+---@class ParserInfo
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+parser_config.gleam = {
+  install_info = {
+    url = "~/tree-sitter-gleam",
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
   },
+  filetype = "gleam",
 }
+
 return {
   -- customize alpha options
   {
