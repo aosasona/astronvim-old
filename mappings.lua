@@ -73,6 +73,14 @@ return {
       function() require("refactoring").debug.cleanup {} end,
       desc = "Debugging - cleanup",
     },
+    ["]t"] = {
+      function() require("todo-comments").jump_next() end,
+      desc = "Next todo comment",
+    },
+    ["[t"] = {
+      function() require("todo-comments").jump_prev() end,
+      desc = "Previous todo comment",
+    },
   },
   t = {
     -- setting a mapping to false will disable it

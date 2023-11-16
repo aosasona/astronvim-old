@@ -12,6 +12,12 @@ return {
   -- { "dmmulroy/tsc.nvim" },
   -- { "ellisonleao/carbon-now.nvim", cmd = "CarbonNow", lazy = false },
   {
+    "folke/todo-comments.nvim",
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function() require("todo-comments").setup() end,
+  },
+  {
     "wakatime/vim-wakatime",
     lazy = false,
   },
