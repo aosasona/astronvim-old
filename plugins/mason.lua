@@ -23,6 +23,7 @@ return {
         "sqlls",
         "tailwindcss",
         "rust_analyzer",
+        "clangd",
       },
     },
   },
