@@ -11,7 +11,30 @@ return {
   -- },
   -- { "dmmulroy/tsc.nvim" },
   -- { "ellisonleao/carbon-now.nvim", cmd = "CarbonNow", lazy = false },
+  -- {
+  --   "andweeb/presence.nvim",
+  --   lazy = false,
+  --   config = function()
+  --     require("presence").setup {
+  --       auto_update = true,
+  --       neovim_image_text = "A wise choice",
+  --       main_image = "neovim",
+  --       client_id = "1071630966734458952",
+  --       debounce_timeout = 10,
+  --       show_time = true,
+  --       log_level = "debug",
+  --       editing_text = "Typing things into %s",
+  --       file_explorer_text = "Browsing %s",
+  --       git_commit_text = "Committing changes",
+  --       plugin_manager_text = "Managing plugins",
+  --       reading_text = "Probably finding bugs in %s",
+  --       workspace_text = "Working on %s",
+  --       line_number_text = "Line %s out of %s",
+  --     }
+  --   end,
+  -- },
   { "lunarvim/primer.nvim", lazy = false },
+  { "aktersnurra/no-clown-fiesta.nvim", lazy = false },
   {
     "folke/todo-comments.nvim",
     lazy = false,
@@ -33,7 +56,6 @@ return {
   },
   {
     "mhanberg/elixir.nvim",
-    lazy = false,
     config = function() require("elixir").setup() end,
   },
   { "sainnhe/gruvbox-material", as = "gruvbox-material", lazy = false },
