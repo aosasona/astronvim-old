@@ -50,6 +50,7 @@ return {
     -- enable servers that you already have installed without mason
     servers = {
       -- "pyright"
+      "glas",
     },
     config = {
       clangd = function()
@@ -85,6 +86,16 @@ return {
           },
           root_dir = function(fname) return util.root_pattern(unpack(root_files))(fname) or util.path.dirname(fname) end,
           filetypes = { "c", "cpp", "objc", "objcpp" },
+          single_file_support = true,
+        }
+      end,
+      glas = function()
+        ---@class lsp.ClientCapabilities
+        return {
+          cmd = { "glas", "--stdio" },
+          capabilities = vim.lsp.protocol.make_client_capabilities(),
+          root_dir = require("lspconfig.util").root_pattern "gleam.toml",
+          filetypes = { "gleam" },
           single_file_support = true,
         }
       end,
