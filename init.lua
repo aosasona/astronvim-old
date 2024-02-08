@@ -17,8 +17,8 @@ return {
     },
   },
   -- Set colorscheme to use
-  colorscheme = "primer_dark",
-  -- colorscheme = "gruvbox-material",
+  colorscheme = "gruvbox-material",
+  -- colorscheme = "primer_dark",
   -- colorscheme = "catppuccin",
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {

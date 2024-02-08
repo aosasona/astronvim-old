@@ -19,7 +19,6 @@ return {
         "bashls",
         "emmet_ls",
         "cssmodules_ls",
-        "ruby_ls",
         "sqlls",
         "tailwindcss",
         "rust_analyzer",
@@ -38,25 +37,11 @@ return {
         "shfmt",
         "shellcheck",
         "goimports",
-        "goimports",
         "gomodifytags",
         "gotests",
       },
       handlers = {
         taplo = function() end, -- disable taplo in null-ls, it's taken care of by lspconfig
-      },
-    },
-  },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    opts = {
-      ensure_installed = {
-        "bash",
-        "cppdbg",
-        "delve",
-        "js",
-        "php",
-        "python",
       },
     },
   },
