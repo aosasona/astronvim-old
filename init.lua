@@ -69,6 +69,7 @@ return {
           "configure.ac", -- AutoTools
           "run",
           "compile",
+          "build.zig", -- using zig as a build system
         }
 
         return {
@@ -81,11 +82,12 @@ return {
             "--fallback-style=Google",
             "--enable-config",
             "--header-insertion=iwyu",
-            "-j=2",
+            "-j=4",
             "--suggest-missing-includes",
+            "--header-insertion=iwyu",
           },
           root_dir = function(fname) return util.root_pattern(unpack(root_files))(fname) or util.path.dirname(fname) end,
-          filetypes = { "c", "cpp", "objc", "objcpp" },
+          filetypes = { "c", "cc", "cxx", "cpp", "objc", "objcpp" },
           single_file_support = true,
         }
       end,
