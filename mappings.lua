@@ -111,6 +111,28 @@ return {
       desc = "Last item",
     },
     ["gR"] = { function() require("trouble").toggle "lsp_references" end },
+
+    -- Sourcegraph (cody)
+    ["<leader>ss"] = {
+      function() require("sg.extensions.telescope").fuzzy_search_results() end,
+      desc = "Search using Sourcegraph",
+    },
+    ["<leader>sh"] = {
+      function() require("sg.keymaps").help() end,
+      desc = "Show keymaps help",
+    },
+    ["<leader>sc"] = {
+      function() require("sg.cody.commands").toggle() end,
+      desc = "Toggle Cody chat panel",
+    },
+    ["<leader>sf"] = {
+      function() require("sg.cody.commands").history() end,
+      desc = "Show Cody chat history",
+    },
+    ["<leader>sp"] = {
+      function() require("sg.cody.commands").focus_prompt() end,
+      desc = "Focus prompt pane",
+    },
   },
   t = {
     -- setting a mapping to false will disable it

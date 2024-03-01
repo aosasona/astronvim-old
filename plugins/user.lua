@@ -37,6 +37,12 @@ return {
     "folke/trouble.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
   },
+  {
+    "sourcegraph/sg.nvim",
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function() require("sg").setup {} end,
+  },
   { "lunarvim/primer.nvim", lazy = false },
   { "dmmulroy/ts-error-translator.nvim", lazy = false, config = function() require("ts-error-translator").setup() end },
   { "aktersnurra/no-clown-fiesta.nvim", lazy = false },
