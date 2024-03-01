@@ -33,6 +33,10 @@ return {
   --     }
   --   end,
   -- },
+  {
+    "folke/trouble.nvim",
+    dependencies = "nvim-tree/nvim-web-devicons",
+  },
   { "lunarvim/primer.nvim", lazy = false },
   { "dmmulroy/ts-error-translator.nvim", lazy = false, config = function() require("ts-error-translator").setup() end },
   { "aktersnurra/no-clown-fiesta.nvim", lazy = false },

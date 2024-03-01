@@ -57,20 +57,23 @@ return {
     ["<leader>a"] = { "<cmd>CodeActionMenu<CR>", desc = "Show code action menu" },
     -- refactoring
     ["<leader>r"] = { "<cmd>Refactor<cr>", desc = "Refactor" }, -- this is to set the prefix properly in which-key
-    ["<leader>rr"] = { function() require("refactoring").select_refactor {} end, desc = "Show refactoring options" },
+    ["<leader>rr"] = {
+      function() require("refactoring").select_refactor { show_success_message = true } end,
+      desc = "Show refactoring options",
+    },
     ["<leader>ri"] = { "<cmd>Refactor inline_var<cr>", desc = "Inline variable" },
     ["<leader>rb"] = { "<cmd>Refactor extract_block<cr>", desc = "Extract block" },
     ["<leader>rl"] = { "<cmd>Refactor extract_block_to_file<cr>", desc = "Extract block to file" },
     ["<leader>rp"] = {
-      function() require("refactoring").debug.printf { below = false } end,
+      function() require("refactoring").debug.printf { below = false, show_success_message = true } end,
       desc = "Debugging - printf",
     },
     ["<leader>r`"] = {
-      function() require("refactoring").debug.print_var {} end,
+      function() require("refactoring").debug.print_var { show_success_message = true } end,
       desc = "Debugging - print var",
     },
     ["<leader>rc"] = {
-      function() require("refactoring").debug.cleanup {} end,
+      function() require("refactoring").debug.cleanup { show_success_message = true } end,
       desc = "Debugging - cleanup",
     },
     ["]t"] = {
@@ -81,6 +84,33 @@ return {
       function() require("todo-comments").jump_prev() end,
       desc = "Previous todo comment",
     },
+
+    -- Trouble.nvim
+    ["<leader>xx"] = { function() require("trouble").toggle() end, desc = "Show trouble" },
+    ["<leader>xc"] = { function() require("trouble").close() end, desc = "Close trouble" },
+    ["<leader>xw"] = {
+      function() require("trouble").toggle "workspace_diagnostics" end,
+      desc = "Workspace diagnostics",
+    },
+    ["<leader>xd"] = {
+      function() require("trouble").toggle "document_diagnostics" end,
+      desc = "Document diagnostics",
+    },
+    ["<leader>xq"] = { function() require("trouble").toggle "quickfix" end, desc = "Quickfix" },
+    ["<leader>xl"] = { function() require("trouble").toggle "loclist" end, desc = "Location list" },
+    ["<leader>xk"] = {
+      function() require("trouble").previous { skip_groups = false, jump = true } end,
+      desc = "Previous item",
+    },
+    ["<leader>xj"] = {
+      function() require("trouble").next { skip_groups = false, jump = true } end,
+      desc = "Next item",
+    },
+    ["<leader>xg"] = {
+      function() require("trouble").last { skip_groups = false, jump = true } end,
+      desc = "Last item",
+    },
+    ["gR"] = { function() require("trouble").toggle "lsp_references" end },
   },
   t = {
     -- setting a mapping to false will disable it
@@ -103,13 +133,16 @@ return {
     ["s"] = "<Nop>",
     -- refactoring
     ["<leader>r"] = { "<cmd>Refactor<cr>", desc = "Refactor" }, -- this is to set the prefix properly in which-key
-    ["<leader>rr"] = { function() require("refactoring").select_refactor {} end, desc = "Show refactoring options" },
+    ["<leader>rr"] = {
+      function() require("refactoring").select_refactor { show_success_message = true } end,
+      desc = "Show refactoring options",
+    },
     ["<leader>re"] = { "<cmd>Refactor extract <cr>", desc = "Extract function" },
     ["<leader>rf"] = { "<cmd>Refactor extract_to_file <cr>", desc = "Extract function to file" },
     ["<leader>rv"] = { "<cmd>Refactor extract_var <cr>", desc = "Extract variable" },
     ["<leader>ri"] = { "<cmd>Refactor inline_var<cr>", desc = "Inline variable" },
     ["<leader>r`"] = {
-      function() require("refactoring").debug.print_var {} end,
+      function() require("refactoring").debug.print_var { show_success_message = true } end,
       desc = "Debugging - print var",
     },
   },
