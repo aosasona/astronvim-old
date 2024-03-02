@@ -30,10 +30,9 @@ return {
     "jay-babu/mason-null-ls.nvim",
     opts = {
       ensure_installed = {
+        "biome",
         "shellcheck",
         "stylua",
-        "black",
-        "prettierd",
         "shfmt",
         "shellcheck",
         "goimports",

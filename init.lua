@@ -51,6 +51,7 @@ return {
     servers = {
       -- "pyright"
       "glas",
+      "psalmls",
     },
     config = {
       clangd = function()
@@ -98,6 +99,16 @@ return {
           capabilities = vim.lsp.protocol.make_client_capabilities(),
           root_dir = require("lspconfig.util").root_pattern "gleam.toml",
           filetypes = { "gleam" },
+          single_file_support = true,
+        }
+      end,
+      psalmls = function()
+        ---@class lsp.ClientCapabilities
+        return {
+          cmd = { "vendor/bin/psalm-language-server" },
+          capabilities = vim.lsp.protocol.make_client_capabilities(),
+          root_dir = require("lspconfig.util").root_pattern("psalm.xml", "psalm.xml.dist"),
+          filetypes = { "php" },
           single_file_support = true,
         }
       end,
