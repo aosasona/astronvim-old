@@ -139,8 +139,8 @@ return {
     -- ["<esc>"] = false,
   },
   i = {
-    ["<M-tab>"] = { 'copilot#Accept("<CR>")', silent = true, expr = true },
-    ["<C-/>"] = { 'copilot#Accept("<CR>")', silent = true, expr = true },
+    ["<M-tab>"] = { 'copilot#Accept("<CR>")', noremap = true, silent = true, expr = true, replace_keycodes = false },
+    ["<C-\\>"] = { 'copilot#Accept("<CR>")', noremap = true, silent = true, expr = true, replace_keycodes = false },
   },
   x = {
     -- better increment/decrement
