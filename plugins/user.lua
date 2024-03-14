@@ -33,6 +33,8 @@ return {
   --     }
   --   end,
   -- },
+  { "inko-lang/inko.vim", lazy = false },
+  { "projekt0n/github-nvim-theme", lazy = false },
   {
     "folke/trouble.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
