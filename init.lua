@@ -105,7 +105,7 @@ return {
       psalmls = function()
         ---@class lsp.ClientCapabilities
         return {
-          cmd = { "vendor/bin/psalm-language-server" },
+          cmd = { "psalm-language-server" },
           capabilities = vim.lsp.protocol.make_client_capabilities(),
           root_dir = require("lspconfig.util").root_pattern("psalm.xml", "psalm.xml.dist"),
           filetypes = { "php" },
