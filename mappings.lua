@@ -133,6 +133,9 @@ return {
       function() require("sg.cody.commands").focus_prompt() end,
       desc = "Focus prompt pane",
     },
+
+    -- Laravel
+    ["<leader>lv"] = { ":Laravel artisan<cr>", desc = "Run Laravel artisan commands" },
   },
   t = {
     -- setting a mapping to false will disable it
