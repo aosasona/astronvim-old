@@ -33,6 +33,7 @@ return {
   --     }
   --   end,
   -- },
+  { "ethanholz/freeze.nvim", config = true, lazy = false },
   {
     "adalessa/laravel.nvim",
     dependencies = {
@@ -45,7 +46,7 @@ return {
     event = { "VeryLazy" },
     config = true,
   },
-  { "inko-lang/inko.vim", lazy = false },
+  { "inko-lang/inko.vim" },
   { "projekt0n/github-nvim-theme", lazy = false },
   {
     "folke/trouble.nvim",
@@ -58,7 +59,7 @@ return {
     config = function() require("sg").setup {} end,
   },
   { "lunarvim/primer.nvim", lazy = false },
-  { "dmmulroy/ts-error-translator.nvim", lazy = false, config = function() require("ts-error-translator").setup() end },
+  { "dmmulroy/ts-error-translator.nvim", config = function() require("ts-error-translator").setup() end },
   { "aktersnurra/no-clown-fiesta.nvim", lazy = false },
   {
     "folke/todo-comments.nvim",
