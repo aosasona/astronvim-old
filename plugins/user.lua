@@ -93,16 +93,18 @@ return {
   { "Everblush/everblush.nvim", as = "everblush", lazy = false },
   { "Mofiqul/dracula.nvim", as = "dracula", lazy = false },
   { "olimorris/onedarkpro.nvim", lazy = false },
-  {
-    "rose-pine/neovim",
-    as = "rose-pine",
-    lazy = false,
-    config = function() require("rose-pine").setup() end,
-  },
   { "prisma/vim-prisma", lazy = false },
   {
     "ray-x/go.nvim",
+    dependencies = {
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
     config = function() require("go").setup() end,
+    event = { "CmdlineEnter" },
+    ft = { "go", "gomod" },
+    build = ':lua require("go.install").update_all_sync()',
   },
   { "luisiacc/gruvbox-baby", lazy = false },
 }

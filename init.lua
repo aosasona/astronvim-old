@@ -52,8 +52,16 @@ return {
       -- "pyright"
       "glas",
       "psalmls",
+      "gleam",
     },
     config = {
+      gopls = {
+        settings = {
+          gopls = {
+            staticcheck = true,
+          },
+        },
+      },
       clangd = function()
         ---@class lsp.ClientCapabilities
         local cap = vim.lsp.protocol.make_client_capabilities()
