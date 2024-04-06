@@ -65,7 +65,6 @@ return {
     "mhanberg/elixir.nvim",
     config = function() require("elixir").setup() end,
   },
-  { "sainnhe/gruvbox-material", as = "gruvbox-material", lazy = false },
   { "ayu-theme/ayu-vim", as = "ayu-vim", lazy = false },
   { "wuelnerdotexe/vim-astro", lazy = false },
   { "rebelot/kanagawa.nvim", lazy = false },

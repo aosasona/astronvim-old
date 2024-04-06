@@ -1,18 +1,17 @@
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
--- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
---       as this provides autocomplete and documentation while editing
 --
+-- Legacy gleam support
 ---@class ParserInfo
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.gleam = {
-  install_info = {
-    url = "~/tree-sitter-gleam",
-    files = { "src/parser.c", "src/scanner.c" },
-    branch = "main",
-  },
-  filetype = "gleam",
-}
+-- local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+-- parser_config.gleam = {
+--   install_info = {
+--     url = "~/tree-sitter-gleam",
+--     files = { "src/parser.c", "src/scanner.c" },
+--     branch = "main",
+--   },
+--   filetype = "gleam",
+-- }
 
 local user_utils = require "utils"
 
@@ -42,16 +41,18 @@ return {
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
-        wrap = false, -- sets vim.opt.wrap
+        wrap = true, -- sets vim.opt.wrap
+        termguicolors = true,
+        background = "dark",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
-        -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
-        -- This can be found in the `lua/lazy_setup.lua` file
+        gruvbox_material_background = "hard",
+        gruvbox_material_better_performance = 1,
+        astro_typescript = "enable",
       },
     },
     -- Mappings can be configured through AstroCore as well.
-    -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
     mappings = {
       -- first key is the mode
       n = {
