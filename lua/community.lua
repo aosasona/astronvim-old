@@ -9,7 +9,7 @@ return {
 
   -- Language and framework support packs
   { import = "astrocommunity.pack.astro" },
-  { import = "astrocommunity.pack.cpp" },
+  -- { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.elixir-phoenix" },
   { import = "astrocommunity.pack.go" },

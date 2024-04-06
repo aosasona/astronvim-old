@@ -52,11 +52,45 @@ return {
 
     -- LSP configuration
     opts.config = require("astrocore").extend_tbl(opts.config or {}, {
-      clangd = {
-        capabilities = {
-          offsetEncoding = { "utf-8" },
-        },
-      },
+      clangd = function()
+        ---@class lsp.ClientCapabilities
+        local cap = vim.lsp.protocol.make_client_capabilities()
+        local util = require "lspconfig.util"
+        cap.offsetEncoding = { "utf-16" }
+
+        local root_files = {
+          ".clangd",
+          ".clang-tidy",
+          ".clang-format",
+          "compile_commands.json",
+          "compile_flags.txt",
+          "build.sh", -- buildProject
+          "configure.ac", -- AutoTools
+          "run",
+          "compile",
+          "build.zig", -- using zig as a build system
+        }
+
+        return {
+          capabilities = cap,
+          cmd = {
+            "clangd",
+            "--offset-encoding=utf-16",
+            "--background-index",
+            "--clang-tidy",
+            "--cross-file-rename",
+            "--fallback-style=Google",
+            "--enable-config",
+            "--header-insertion=iwyu",
+            "-j=4",
+            "--suggest-missing-includes",
+            "--header-insertion=iwyu",
+          },
+          root_dir = function(fname) return util.root_pattern(unpack(root_files))(fname) or util.path.dirname(fname) end,
+          filetypes = { "c", "cc", "cxx", "cpp", "objc", "objcpp" },
+          single_file_support = true,
+        }
+      end,
 
       -- Glas for Gleam language
       glas = {
