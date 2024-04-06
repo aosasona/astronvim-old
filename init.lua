@@ -15,5 +15,12 @@ if not pcall(require, "lazy") then
   vim.cmd.quit()
 end
 
+-- Options for gruvbox-material
+vim.opt.termguicolors = true
+vim.g.gruvbox_material_background = "hard"
+vim.g.gruvbox_material_better_performance = 1
+
 require "lazy_setup"
 require "polish"
+
+-- vim.cmd "colorscheme gruvbox-material"
