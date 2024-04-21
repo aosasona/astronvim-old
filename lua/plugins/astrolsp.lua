@@ -6,16 +6,15 @@ return {
   "AstroNvim/astrolsp",
 
   ---@class opts AstroLSPOpts
-  opts = function(plugin, opts)
-    opts.features = {
+  opts = {
+    features = {
       autoformat = true, -- enable or disable auto formatting on start
       codelens = true, -- enable/disable codelens refresh on start
       inlay_hints = true, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
-    }
-
+    },
     -- (Auto)formatting
-    opts.formatting = {
+    formatting = {
       -- control auto formatting on save
       format_on_save = {
         enabled = true, -- enable or disable format on save globally
@@ -28,69 +27,72 @@ return {
         -- disable formatting capabilities for the listed language servers
       },
       timeout_ms = 1500, -- default format timeout
-    }
-
+    },
     -- Language servers
-    opts.servers = opts.servers or {}
-    vim.list_extend(opts.servers, {
+    servers = {
+      -- "clangd",
       "glas",
       "gleam",
       "psalmls",
-    })
+    },
 
-    opts.setup_handlers = {
+    setup_handlers = {
       -- add custom handler
-      jdtls = function(_, opts)
-        vim.api.nvim_create_autocmd("Filetype", {
-          pattern = "java", -- autocmd to start jdtls
-          callback = function()
-            if opts.root_dir and opts.root_dir ~= "" then require("jdtls").start_or_attach(opts) end
-          end,
-        })
-      end,
-    }
+      -- jdtls = function(_, opts)
+      --   vim.api.nvim_create_autocmd("Filetype", {
+      --     pattern = "java", -- autocmd to start jdtls
+      --     callback = function()
+      --       if opts.root_dir and opts.root_dir ~= "" then require("jdtls").start_or_attach(opts) end
+      --     end,
+      --   })
+      -- end,
+    },
 
     -- LSP configuration
-    opts.config = require("astrocore").extend_tbl(opts.config or {}, {
-      clangd = function()
-        ---@class lsp.ClientCapabilities
-        local cap = vim.lsp.protocol.make_client_capabilities()
-        local util = require "lspconfig.util"
-        cap.offsetEncoding = { "utf-16" }
+    config = {
+      -- clangd = {
+      --   capabilities = vim.lsp.protocol.make_client_capabilities(),
+      --   cmd = {
+      --     "clangd",
+      --     "--offset-encoding=utf-16",
+      --     "--background-index",
+      --     "--clang-tidy",
+      --     "--cross-file-rename",
+      --     "--fallback-style=Google",
+      --     "--enable-config",
+      --     "--header-insertion=iwyu",
+      --     "-j=4",
+      --     "--suggest-missing-includes",
+      --     "--header-insertion=iwyu",
+      --     "--completion-style=detailed",
+      --   },
+      --   root_dir = function(fname)
+      --     local root_files = {
+      --       ".clangd",
+      --       ".clang-tidy",
+      --       ".clang-format",
+      --       "compile_commands.json",
+      --       "compile_flags.txt",
+      --       "build.sh", -- buildProject
+      --       "configure.ac", -- AutoTools
+      --       "run",
+      --       "compile",
+      --       "build.zig", -- using zig as a build system
+      --     }
+      --
+      --     return require("lspconfig.util").root_pattern(unpack(root_files))(fname)
+      --       or require("lspconfig.util").path.dirname(fname)
+      --   end,
+      --   filetypes = { "c", "cc", "cxx", "cpp", "objc", "objcpp" },
+      --   single_file_support = true,
+      -- },
 
-        local root_files = {
-          ".clangd",
-          ".clang-tidy",
-          ".clang-format",
-          "compile_commands.json",
-          "compile_flags.txt",
-          "build.sh", -- buildProject
-          "configure.ac", -- AutoTools
-          "run",
-          "compile",
-          "build.zig", -- using zig as a build system
-        }
-
-        return {
-          capabilities = cap,
-          cmd = {
-            "clangd",
-            "--offset-encoding=utf-16",
-            "--background-index",
-            "--clang-tidy",
-            "--cross-file-rename",
-            "--fallback-style=Google",
-            "--enable-config",
-            "--header-insertion=iwyu",
-            "-j=4",
-            "--suggest-missing-includes",
-            "--header-insertion=iwyu",
-          },
-          root_dir = function(fname) return util.root_pattern(unpack(root_files))(fname) or util.path.dirname(fname) end,
-          filetypes = { "c", "cc", "cxx", "cpp", "objc", "objcpp" },
-          single_file_support = true,
-        }
-      end,
+      clangd = {
+        capabilities = {
+          offsetEncoding = "utf-8",
+        },
+        filetypes = { "c", "cc", "cxx", "cpp", "objc", "objcpp" },
+      },
 
       -- Glas for Gleam language
       glas = {
@@ -110,57 +112,6 @@ return {
         },
       },
 
-      -- jdtls server
-      jdtls = function()
-        -- use this function notation to build some variables
-        local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
-        local root_dir = require("jdtls.setup").find_root(root_markers)
-
-        -- calculate workspace dir
-        local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-        local workspace_dir = vim.fn.stdpath "data" .. "/site/java/workspace-root/" .. project_name
-        os.execute("mkdir " .. workspace_dir)
-
-        -- get the mason install path
-        local install_path = require("mason-registry").get_package("jdtls"):get_install_path()
-
-        -- get the current OS
-        local os
-        if vim.fn.has "macunix" then
-          os = "mac"
-        elseif vim.fn.has "win32" then
-          os = "win"
-        else
-          os = "linux"
-        end
-
-        -- return the server config
-        return {
-          cmd = {
-            "java",
-            "-Declipse.application=org.eclipse.jdt.ls.core.id1",
-            "-Dosgi.bundles.defaultStartLevel=4",
-            "-Declipse.product=org.eclipse.jdt.ls.core.product",
-            "-Dlog.protocol=true",
-            "-Dlog.level=ALL",
-            "-javaagent:" .. install_path .. "/lombok.jar",
-            "-Xms1g",
-            "--add-modules=ALL-SYSTEM",
-            "--add-opens",
-            "java.base/java.util=ALL-UNNAMED",
-            "--add-opens",
-            "java.base/java.lang=ALL-UNNAMED",
-            "-jar",
-            vim.fn.glob(install_path .. "/plugins/org.eclipse.equinox.launcher_*.jar"),
-            "-configuration",
-            install_path .. "/config_" .. os,
-            "-data",
-            workspace_dir,
-          },
-          root_dir = root_dir,
-        }
-      end,
-
       -- Psalm for PHP
       psalmls = {
         cmd = { "psalm-language-server" },
@@ -169,9 +120,9 @@ return {
         filetypes = { "php" },
         single_file_support = true,
       },
-    })
+    },
 
-    -- opts.autocmds = {
+    -- autocmds = {
     --   -- first key is the `augroup` to add the auto commands to (:h augroup)
     --   lsp_document_highlight = {
     --     -- Optional condition to create/delete auto command group
@@ -196,7 +147,7 @@ return {
     --   },
     -- }
     --
-    -- opts.mappings = {
+    -- mappings = {
     --   n = {
     --     gl = { function() vim.diagnostic.open_float() end, desc = "Hover diagnostics" },
     --     -- a `cond` key can provided as the string of a server capability to be required to attach, or a function with `client` and `bufnr` parameters from the `on_attach` that returns a boolean
@@ -212,5 +163,5 @@ return {
     --     },
     --   },
     -- }
-  end,
+  },
 }
