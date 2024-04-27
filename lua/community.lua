@@ -9,14 +9,13 @@ return {
 
   -- Language and framework support packs
   { import = "astrocommunity.pack.astro" },
-  { import = "astrocommunity.pack.docker" },
+  { import = "astrocommunity.pack.cs" },
   { import = "astrocommunity.pack.elixir-phoenix" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.kotlin" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.php" },
   { import = "astrocommunity.pack.rust" },
-  { import = "astrocommunity.pack.swift" },
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.zig" },
