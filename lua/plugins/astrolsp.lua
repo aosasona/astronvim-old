@@ -34,6 +34,7 @@ return {
       "glas",
       "gleam",
       "psalmls",
+      "v_analyzer",
     },
 
     setup_handlers = {
@@ -118,6 +119,15 @@ return {
         capabilities = vim.lsp.protocol.make_client_capabilities(),
         root_dir = require("lspconfig.util").root_pattern("psalm.xml", "psalm.xml.dist"),
         filetypes = { "php" },
+        single_file_support = true,
+      },
+
+      -- Glas for Gleam language
+      v_analyzer = {
+        cmd = { "/Users/ayodeji/.config/v-analyzer/bin/v-analyzer" },
+        capabilities = vim.lsp.protocol.make_client_capabilities(),
+        root_dir = require("lspconfig.util").root_pattern "v.mod",
+        filetypes = { "v", "vv", "vsh" },
         single_file_support = true,
       },
     },

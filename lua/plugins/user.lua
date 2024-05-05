@@ -1,6 +1,9 @@
 ---@type LazySpec
 return {
   "andweeb/presence.nvim",
+  "jidn/vim-dbml",
+  "tpope/vim-surround",
+  "tpope/vim-dadbod",
   {
     "TobinPalmer/rayso.nvim",
     cmd = { "Rayso" },
@@ -9,11 +12,11 @@ return {
         open_cmd = "chromium",
         base_url = "https://ray.so",
         options = {
-          title = "Code",
-          background = false,
-          theme = "crimson",
+          title = "~/trulyao/snippet",
+          background = true,
+          theme = "vercel",
           dark_mode = true,
-          padding = 64,
+          padding = 32,
           logging_enabled = false,
           logging_path = "/tmp",
           logging_file = "rayso.log",
