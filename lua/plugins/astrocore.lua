@@ -192,7 +192,12 @@ return {
         ["<leader>lv"] = { ":Laravel artisan<cr>", desc = "Run Laravel artisan commands" },
 
         -- Dadbod
-        -- ["<leader>dd"] = { "<cmd>DBUIToggle<cr>", desc = "Toggle dadbod UI" },
+
+        ["<leader>D"] = { name = "󰆼 Dadbod" },
+        ["<leader>Da"] = { "<cmd>DBUIAddConnection<cr>", desc = "Add new connection" },
+        ["<leader>Dd"] = { "<cmd>DBUIToggle<cr>", desc = "Toggle DB UI" },
+        ["<leader>Df"] = { "<cmd>DBUIFindBuffer<cr>", desc = "Find buffer" },
+        ["<leader>Dr"] = { "<cmd>DBUIRenameBuffer<cr>", desc = "Rename buffer" },
       },
       t = {
         -- setting a mapping to false will disable it

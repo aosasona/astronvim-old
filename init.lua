@@ -20,6 +20,13 @@ vim.opt.termguicolors = true
 vim.g.gruvbox_material_background = "hard"
 vim.g.gruvbox_material_better_performance = 1
 
+-- DBUI configuration
+vim.g.db_ui_use_nerd_fonts = 1
+vim.g.db_ui_winwidth = 50
+vim.g.db_ui_show_help = 0
+vim.g.db_ui_use_nvim_notify = 1
+vim.g.db_ui_win_position = "left"
+
 require "lazy_setup"
 require "polish"
 

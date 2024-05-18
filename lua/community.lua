@@ -19,6 +19,7 @@ return {
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.zig" },
+  { import = "astrocommunity.pack.full-dadbod" },
 
   -- Colorschemes
   { import = "astrocommunity.colorscheme.bamboo-nvim" },
