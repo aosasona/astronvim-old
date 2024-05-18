@@ -190,6 +190,9 @@ return {
 
         -- Laravel
         ["<leader>lv"] = { ":Laravel artisan<cr>", desc = "Run Laravel artisan commands" },
+
+        -- Dadbod
+        -- ["<leader>dd"] = { "<cmd>DBUIToggle<cr>", desc = "Toggle dadbod UI" },
       },
       t = {
         -- setting a mapping to false will disable it
