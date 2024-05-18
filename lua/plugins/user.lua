@@ -3,7 +3,7 @@ return {
   "andweeb/presence.nvim",
   "jidn/vim-dbml",
   "tpope/vim-surround",
-  "tpope/vim-dadbod",
+  "tpope/vim-sleuth",
   {
     "TobinPalmer/rayso.nvim",
     cmd = { "Rayso" },
